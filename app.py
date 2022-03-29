@@ -25,7 +25,7 @@ def index():
         email = userDetails['email']
         cur = mysql.connection.cursor()
         cur.execute(
-            "INSERT INTO users (name, email) VALUES(%s,%s)", (name, email))
+            "INSERT INTO users (name, email) VALUES(%s,%s)" % (name, email))
         mysql.connection.commit()
         cur.close()
         return redirect('/users')
@@ -57,20 +57,20 @@ def delete():
     return render_template('delete.html')
 
 
-@app.route('/update', methods=['GET', 'POST'])
+@app.route('/update1', methods=['GET', 'POST'])
 def update():
     if request.method == 'POST':
         # fetch form data
-        userDetails = request.form
-        name = userDetails['name']
-        email = userDetails['email']
-        cur = mysql.connection.cursor()
-        cur.execute(
-            "update users set name=%s where email=%s", (name, email))
-        mysql.connection.commit()
-        cur.close()
-        return redirect('/users')
-    return render_template('update.html')
+        # userDetails = request.form
+        # name = userDetails['name']
+        # email = userDetails['email']
+        # cur = mysql.connection.cursor()
+        # cur.execute(
+        #     "update users set name=%s where email=%s", (name, email))
+        # mysql.connection.commit()
+        # cur.close()
+        return redirect('/update2')
+    return render_template('update1.html')
 
 
 if __name__ == "__main__":
